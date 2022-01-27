@@ -58,7 +58,8 @@ def main_func():
     unit_lst = []
     quality_point_list = []
 
-
+    print("Azowenu Solomon Ugochukwu")
+    print("19/5554")
     try:
         number_of_course = int(prompt("Enter number of course: "))
     except(ValueError):
@@ -81,7 +82,7 @@ def main_func():
         
     cgpa = calc_cgpa(quality_point_list, unit_lst)
     board_display(course_lst, score_lst, unit_lst, grade_point_lst)
-    print(f"YOUR CGPA IS: {cgpa}")
+    print(f"YOUR CGPA IS: {round(cgpa, 2)}")
 
 if __name__ =="__main__":
     main_func()
