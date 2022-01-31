@@ -3,6 +3,8 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 
+#Open new cvs file to store new data set
+file = open("new.csv")
 
 #Store the data
 df = pd.read_csv('ML/movie-data.csv')
@@ -17,3 +19,4 @@ columns = ['Actors', 'Director', 'Genre', 'Title']
 #Show the important data
 print(df[columns].head(3))
 
+file.close()
