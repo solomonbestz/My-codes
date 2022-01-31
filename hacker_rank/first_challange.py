@@ -12,4 +12,4 @@ def sock_marchent(socks):
 if __name__ == "__main__":
     socks = [10, 20, 20, 10, 10, 30, 50, 10, 20]
     socks_2 = [1, 1, 3, 1, 2, 1, 3, 3, 3, 3]
-    print(sock_marchent(socks_2))
+    print(sock_marchent(socks))
