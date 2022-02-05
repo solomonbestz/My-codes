@@ -1,0 +1,165 @@
+
+LECTURE 5
+
+TRANSACTION PROCESSING 
+CONCEPT (TPC)
+Presentation Outline
+1). Definition of Transaction
+2). Properties of Transaction (ACID)
+a). Atomicity
+b). Consistency
+c). Isolation
+d. Durability
+3. Database Transaction
+4. Operations of Transaction
+5. States of Transaction
+6. Schedule
+a. Serial Schedule
+b. Non-Serial Schedule
+c. Serializable Schedule 7. Concurrency Transaction
+Presentation Outline Cont.
+8. Issues in Concurrency Transaction
+9. Concurrency Problems in DBMS Transaction
+a. Temporary Update Problem
+b. Incorrect Summary Problem
+c. Unrepeatable Read Problem
+d. Phantom Read Problem
+10. Concurrency Control Protocol
+a. Lock Control Protocol
+b. Time-Stamp Protocol
+11. Data Control Language
+a. COMMIT 
+b. ROOLBACK
+c. GRANT
+d. REVOKE
+Transactions 
+The transaction is a set of logically related operation. It contains of a group of tasks. It is performed by a single user to carry out operations for accessing the contents of the database.
+Example: When an employee of a bank transfers say N1000 from X's account to Y's account. A transaction has taken place.
+Properties of Transaction 
+Transaction has four properties, which is denoted with the word ACID. These are used to maintain consistency before and after transaction in a database. The word ACID stands for:
+1.Atomicity
+2.Consistency
+3.Isolation
+4.Durability
+Atomicity
+It states that all operations of the transaction take place at once if not, the transaction is aborted.
+* There is no midway, i.e., the transaction cannot occur partially. 
+* Each transaction is treated as one unit and either run to completion or is not executed at all.
+Atomicity Cont.
+Atomicity involves the following two operations:
+� Abort: If a transaction aborts then all the changes made are not visible.
+� Commit: If a transaction commits then all the changes made are visible.
+Consistency
+* The integrity constraints are maintained so that the database is consistent before and after the transaction.
+* The execution of a transaction will leave a database in either its prior stable state or a new stable state.
+* The consistent property of database states that every transaction sees a consistent database instance.
+* The transaction is used to transform the database from one consistent state to another consistent state.
+Isolation
+* It shows that the data which is used at the time of execution of a transaction cannot be used by the second transaction until the first one is completed.
+* In isolation, if the transaction T1 is being executed and using the data item X, then that data item can't be accessed by any other transaction T2 until the transaction T1 ends.
+* The concurrency control subsystem of the DBMS enforced the isolation property.
+Durability
+* The durability property is used to indicate the performance of the database's consistent state. It states that the transaction made the permanent changes.
+* They cannot be lost by the erroneous operation of a faulty transaction or by the system failure. When a transaction is completed, then the database reaches a state known as the consistent state. That consistent state cannot be lost, even in the event of a system's failure.
+* The recovery subsystem of the DBMS has the responsibility of Durability property.
+Database Transactions 
+A database transaction symbolizes a unit of work performed within a database management system against a database, and treated in a coherent and reliable way independent of other transactions 
+(en.wikipedia.org). Its execution may or may not change the contents of a database.   
+Operations of Transaction
+The following are the main operations of transaction:
+� Read(X): Read operation is used to read the value of X from the database and stores it in a buffer in main memory.
+� Write(X): Write operation is used to write the value back to the database from the buffer.
+States of Transactions
+State	Transaction types
+A transaction enters into an active state when the execution 
+Active State 	process begins. During this state read or write operations can be 
+performed. 
+A transaction goes into the partially committed state after the end 
+Partially Committed of a transaction. 
+When the transaction is committed to state, it has already 
+Committed State 	completed its execution successfully. Moreover, all of its changes 
+are recorded to the database permanently. 
+A transaction considers failed when any one of the checks fails or 
+Failed State if the transaction is aborted while it is in the active state. 
+State of transaction reaches terminated state when certain 
+Terminated State transactions which are leaving the system can't be restarted. 
+State Transition Diagram for a 
+Database Transaction
+
+Schedule
+A series of operation from one transaction to another transaction is known as schedule. It is used to preserve the order of the operation in each of the individual transaction.
+Schedule in Diagram
+
+Serial Schedule
+The serial schedule is a type of schedule where one transaction is executed completely before starting another transaction. In the serial schedule, when the first transaction completes its cycle, then the next transaction is executed.
+Non-serial Schedule
+* If interleaving of operations is allowed, then there will be non-serial schedule.
+* It contains many possible orders in which the system can execute the individual operations of the transactions.
+Serializable schedule
+* The serializability of schedules is used to find nonserial schedules that allow the transaction to execute concurrently without interfering with one another. 
+* It identifies which schedules are correct when executions of the transaction have interleaving of their operations.
+* A non-serial schedule will be serializable if its result is equal to the result of its transactions executed serially.
+Concurrency Transactions 
+A database is shared resources that are being accessed. It is used by many users and processes concurrently. Concurrency is nothing but it is a situation where two users are trying to access the same information at the same time and there must be no inconsistency in the result or abnormal behavior. For example, the banking system, railway, and air reservations systems, stock market monitoring, etc.
+Issues in Concurrency Transactions
+In the event where concurrent access is not well managed, this may create issues like: ??Hardware failure and system crashes 
+??Concurrent execution of the same transaction, deadlock, or slow performance
+Concurrency problems in DBMS 
+Transactions
+Issues in concurrency transactions in DBMS are commonly referred to as concurrency problems in database environment. There are five concurrency problems that can occur in database transactions, these are: (i). Temporary Update Problem
+(ii). Incorrect Summary Problem
+(iii). Lost Update Problem
+(iv). Unrepeatable Read Problem (v). Phantom Read Problem These are explained below:
+Temporary Update Problem
+Temporary update or dirty read problem occurs when one transaction updates an item and fails. But the updated item is used by another transaction before the item is changed or reverted back to its last value.
+Incorrect Summary Problem
+This is a situation where one transaction is applying the aggregate function on some records while another transaction is updating these records. The aggregate function may calculate some values before the values have been updated and others after they are updated.
+Lost Update Problem
+When two transactions that access the same database items contain their operations in a way that makes the value of some database item incorrect, then the lost update problem occurs.
+Unrepeatable Read Problem
+The unrepeatable problem occurs when two or more read operations of the same transaction read different values of the same variable.
+
+Phantom Read Problem
+The phantom read problem occurs when a transaction reads a variable once but when it tries to read that same variable again, an error occurs saying that the variable does not exist.
+Concurrency Control Protocol
+Concurrency control protocols ensure atomicity, isolation, and serializability of concurrent transactions. The concurrency control protocol can be divided into three categories:
+1.Lock based protocol
+2.Time-stamp protocol
+3.Validation based protocol
+Lock-Based Protocol
+In this type of protocol, any transaction cannot read or write data until it acquires an appropriate lock on it. There are two types of lock which are: 
+Shared lock and Exclusive lock.
+Shared lock
+* It is also known as a Read-only lock. In a shared lock, the data item can only read by the transaction. 
+* It can be shared between the transactions because when the transaction holds a lock, then it can't update the data on the data item.
+Exclusive lock
+* In the exclusive lock, the data item can be both reads as well as written by the transaction. 
+* This lock is exclusive, and in this lock, multiple transactions do not modify the same data simultaneously.
+Timestamp Ordering Protocol
+* The Timestamp Ordering Protocol is used to order the transactions based on their Timestamps. The order of transaction is nothing but the ascending order of the transaction creation. 
+* The priority of the older transaction is higher that's why it executes first. To determine the timestamp of the transaction, this protocol uses system time or logical counter. 
+* The lock-based protocol is used to manage the order between conflicting pairs among transactions at the execution time. But Timestamp based protocols start working as soon as a transaction is created.
+* The timestamp ordering protocol also maintains the timestamp of last 'read' and 'write' operation on a data.
+Data Control Languages 
+In this case, the following commands or statements that are used to manipulate data will be looked at and these are: COMMIT, 
+ROLLBACK, GRANT and REVOKE will be examined.
+COMMIT TRANSACTION
+COMMIT command is used to permanently save any transaction into the database. When command like INSERT, UPDATE or DELETE is used, the changes made by these commands are not permanent, they can be rolled back but when a COMMIT command is issued it saves all the changes since last COMMIT or ROLLBACK.
+The syntax for commit includes just one keyword 
+COMMIT;
+ROLLBACK TRANSACTION
+ROLLBACK is the SQL command that is used for reverting changes performed by a transaction, that is, it is used to undo the work done.. When a ROLLBACK command is issued it reverts all the changes since last COMMIT or ROLLBACK.
+SYNTAX. ROLLBACK;
+GRANT TRANSACTION
+The GRANT statement or command is used to give 
+privileges to a specific user, or to all users, to perform actions on database objects. Some of the access rights are ALL, EXECUTE, and SELECT.
+The Syntax for the GRANT command is: GRANT privilege_name ON object_name TO {user_name |PUBLIC |role_name} [WITH GRANT OPTION]; 
+privilege_name is the access right or privilege granted to the user. object_name is the name of an database object like TABLE, VIEW,...
+REVOKE
+REVOKE Commands or statements are used to enforce database security in a multiple user database environment. The REVOKE statement can also be used to remove 
+privileges from a specific user or role, or from all users, from performing actions on database objects. 
+� Note: It is only the Database Administrator or owner of the database object that can provide/remove privileges on a database object e.g TABLE, VIEW.
+
+Thanks for listening.
+God bless.
+

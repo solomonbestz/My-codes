@@ -1,10 +1,10 @@
 import pandas as pd
-import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 
 #Store the data
 df = pd.read_csv('ML/movie-data.csv')
+
 
 # Updating the cvv with movie id ranging from 0 - the end of moie
 df['Movie_Id'] = range(0, 1000)
@@ -46,7 +46,7 @@ cs = cosine_similarity(cm)
 # print(cs.shape)
 
 #Get the title of the movie that the user likes
-title = "Trolls"
+title = "Take Me Home Tonight"
 
 #Find the movies id
 movie_id = df[df.Title == title]['Movie_Id'].values[0]
@@ -58,13 +58,13 @@ scores = list(enumerate(cs[movie_id]))
 sorted_scores = sorted(scores, key = lambda x:x[1], reverse = True)
 sorted_scores = sorted_scores[1:]
 
-#print the sorted scores
+#print the sorted scores 
 # print(sorted_scores)
 
-
+1
 #Create a loop to print the first 7 similar movies
 j = 0
-print('THe seven most recommended movies to', title, 'are:\n')
+# print('THe seven most recommended movies to', title, 'are:\n')
 for item in sorted_scores:
     movie_title = df[df.Movie_Id == item[0]]['Title'].values[0]
     print(j+1, movie_title)
