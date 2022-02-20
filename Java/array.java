@@ -32,5 +32,7 @@ class array {
         }
         float cgpa = qp_sum / unit_sum;
         System.out.println("Your Cgpa is: " + df.format(cgpa));
+
+        input.close();
     }
 }

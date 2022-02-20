@@ -19,7 +19,7 @@ class Main{
         System.out.println("Enter unit for CSC311");
         int csc311_unit = input.nextInt();
         //Calculation of CGPA
-        int QP_CSC301 = CSC301 * csc301_unit;
+         int QP_CSC301 = CSC301 * csc301_unit;
         int QP_CSC335 = CSC335 * csc335_unit;
         int QP_CSC311 = CSC311 * csc311_unit;
         int total_QP = QP_CSC301 + QP_CSC311 + QP_CSC335;
