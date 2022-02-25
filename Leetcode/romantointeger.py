@@ -11,7 +11,7 @@ class Solution:
             "D":500,
             "M":1000
         }
-        add = 0
+        
         for n in roman_constant_data:
             if n in s:
                 roman_sum = roman_sum + (roman_dic[n[1]]-roman_dic[n[0]])   
